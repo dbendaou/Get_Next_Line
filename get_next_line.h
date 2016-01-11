@@ -21,7 +21,8 @@ i/* ************************************************************************** *
 # include <fcntl.h>
 # include <stdio.h>
 
-int 	get_next_line(int const fd, char ** line);
-size_t	ft_strlen(char const *str);
+int 		get_next_line(int const fd, char ** line);
+static int	get_next_n(char const **str);
+size_t		ft_strlen(char const *str);
 
 #endif
