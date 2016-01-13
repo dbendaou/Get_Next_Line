@@ -1,28 +1,33 @@
-i/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dbendaou <dbendaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/20 19:50:17 by dbendaou          #+#    #+#             */
-/*   Updated: 2015/12/22 17:53:45 by dbendaou         ###   ########.fr       */
+/*   Created: 2016/01/11 18:01:05 by dbendaou          #+#    #+#             */
+/*   Updated: 2016/01/13 16:57:28 by dbendaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		GET_NEXT_LINE_H
-# define	GET_NEXT_LINE_H
-# define	BUF_SIZE 42
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <sys/uio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 4096
+
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <stdio.h>
 
-int 		get_next_line(int const fd, char ** line);
-static int	get_next_n(char const **str);
-size_t		ft_strlen(char const *str);
+typedef struct	s_file
+{
+	int			ret;
+	char		buff[BUFF_SIZE];
+	char		*tmp;
+}				t_file;
+
+int				get_next_line(int const fd, char **line);
 
 #endif
