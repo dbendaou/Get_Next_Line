@@ -6,7 +6,7 @@
 /*   By: dbendaou <dbendaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 18:00:57 by dbendaou          #+#    #+#             */
-/*   Updated: 2016/01/13 17:10:31 by dbendaou         ###   ########.fr       */
+/*   Updated: 2016/01/20 15:46:57 by dbendaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		get_next_n(char const *str)
 
 static int		read_static(char **line, char **str, t_file *frd)
 {
-	if (!(*line = ft_strsub(*str, 0, get_next_n(*str) - 1)))
+	if (!(*line = ft_strndup(*str, get_next_n(*str) - 1)))
 		return (0);
 	if (!(frd->tmp = ft_strdup(ft_strchr(*str, '\n') + 1)))
 		return (0);
@@ -37,7 +37,7 @@ static int		read_static(char **line, char **str, t_file *frd)
 
 static int		buff_join(char **line, char **str, t_file *frd)
 {
-	frd->tmp = ft_strsub(frd->buff, 0, get_next_n(frd->buff) - 1);
+	frd->tmp = ft_strndup(frd->buff, get_next_n(frd->buff) - 1);
 	*line = ft_strjoin(*str, frd->tmp);
 	ft_strdel(&(frd->tmp));
 	ft_strdel(str);
@@ -62,7 +62,7 @@ static int		getget(char **line, char **str, t_file *frd)
 	}
 	else if (*str == NULL)
 	{
-		*line = ft_strsub(frd->buff, 0, get_next_n(frd->buff) - 1);
+		*line = ft_strndup(frd->buff, get_next_n(frd->buff) - 1);
 		*str = ft_strdup(ft_strchr(frd->buff, '\n') + 1);
 		return (1);
 	}
@@ -95,13 +95,3 @@ int				get_next_line(int const fd, char **line)
 	}
 	return ((frd->ret == -1) ? -1 : 0);
 }
-
-// int 			main(int ac, char **av)
-// {
-// 		int fd = open(av[1], O_RDONLY);
-// 		char *line;
-// 		while (get_next_line(fd, &line))
-// 		{
-// 		printf("%s\n", line);
-// 		}
-// }
