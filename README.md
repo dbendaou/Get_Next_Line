@@ -1,6 +1,8 @@
 # Get_Next_Line
-/*
+
+
 -------------------------- main de test --------------------------
+
 #include <stdio.h>
 int		 main(int ac, char **av)
 {
@@ -16,4 +18,3 @@ int		 main(int ac, char **av)
 	 }
 	return (1);
 }
-*/
