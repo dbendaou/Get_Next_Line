@@ -4,7 +4,7 @@
 -------------------------- main de test --------------------------
 
 \#include <stdio.h>
-int		 main(int ac, char **av)\n
+int		 main(int ac, char **av)
 {
 
 	int fd;
